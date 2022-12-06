@@ -18,6 +18,16 @@ s7=["M","V","Z","W","S","J","D","P"]
 s8=["N","D","S"]
 s9=["D","Z","S","F","M"]
 
+#     [D]    
+# [N] [C]    
+# [Z] [M] [P]
+#  1   2   3 
+
+# s1=["Z","N"]
+# s2=["M","C","D"]
+# s3=["P"]
+
+
 moves = []
 
 with open('Day05/input.txt', 'r') as file:
@@ -27,14 +37,13 @@ with open('Day05/input.txt', 'r') as file:
     line4 = line3.replace("to ", ",")
     line5 = line4.split("\n")
 
-#print(f"{line5}")
 for i in line5:
     moves.append([int(x) for x in i.split(",")])
 
-#print(f"{moves}")
+#print(f"Moves: {moves}")
 
 def shuffle(target, x):
-    print(f"Target: {target} - value: {x}")
+    print(f"target {target}, crate: {x}")
     if target == 1:
         s1.append(x)
     if target == 2:
@@ -55,72 +64,70 @@ def shuffle(target, x):
         s9.append(x)
              
 def movecrates(crates, source, target):
-    #print(f"Moves: {crates} - Source: {source} - Target: {target}")
+    print(f"crates: {crates}, source: {source}, target: {target}")
     if source == 1:
-        c2move = 0
-        while (c2move < crates):
-            x = s1[-1]              # get value of last element
-            del s1[-1]              # remove last element
+        y = s1[-crates:]
+        for x in y:
             shuffle(target, x)
-            c2move += 1    
+            x = s1[-1]
+            del s1[-1]               
     if source == 2:
-        c2move = 0
-        while (c2move < crates):
+        y = s2[-crates:]
+        for x in y:
+            shuffle(target, x)
             x = s2[-1]
             del s2[-1]
-            shuffle(target, x)
-            c2move += 1  
     if source == 3:
-        c2move = 0
-        while (c2move < crates):
+        y = s3[-crates:]
+        for x in y:
+            shuffle(target, x)
             x = s3[-1]
             del s3[-1]
-            shuffle(target, x)
-            c2move += 1
     if source == 4:
-        c2move = 0
-        while (c2move < crates):
+        y = s4[-crates:]            
+        for x in y:
+            shuffle(target, x)
             x = s4[-1]
             del s4[-1]
-            shuffle(target, x)
-            c2move += 1
     if source == 5:
-        c2move = 0
-        while (c2move < crates):
+        a = s5[-crates:]            
+        y = list(reversed(a))  
+        for x in y:
+            shuffle(target, x)
             x = s5[-1]
             del s5[-1]
-            shuffle(target, x)
-            c2move += 1            
     if source == 6:
-        c2move = 0
-        while (c2move < crates):
+        y = s6[-crates:]            
+        for x in y:
+            shuffle(target, x)
             x = s6[-1]
             del s6[-1]
-            shuffle(target, x)
-            c2move += 1
     if source == 7:
-        c2move = 0
-        while (c2move < crates):
+        y = s7[-crates:]            
+        for x in y:
+            shuffle(target, x)
             x = s7[-1]
             del s7[-1]
-            shuffle(target, x)
-            c2move += 1
     if source == 8:
-        c2move = 0
-        while (c2move < crates):
+        y = s8[-crates:]            
+        for x in y:
+            shuffle(target, x)
             x = s8[-1]
             del s8[-1]
-            shuffle(target, x)
-            c2move += 1
     if source == 9:
-        c2move = 0
-        while (c2move < crates):
+        y = s9[-crates:]            
+        for x in y:
+            shuffle(target, x)
             x = s9[-1]
             del s9[-1]
-            shuffle(target, x)
-            c2move += 1
 
+c = 0
 for m in moves:
+    c += 1
+    print(f"Move {c}:\n{s1}\n{s2}\n{s3}\n{s4}\n{s5}\n{s6}\n{s7}\n{s8}\n{s9}")
     movecrates(m[0],m[1],m[2])
+    if (c % 10) == 0:
+        input("Press Enter to continue... ") 
 
-print(f"{s1}\n{s2}\n{s3}\n{s4}\n{s5}\n{s6}\n{s7}\n{s8}\n{s9}")
+#print(f"{s1}\n{s2}\n{s3}\n{s4}\n{s5}\n{s6}\n{s7}\n{s8}\n{s9}")
+#print(f"{s1}\n{s2}\n{s3}")
