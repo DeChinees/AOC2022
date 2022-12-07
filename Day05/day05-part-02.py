@@ -62,63 +62,53 @@ def shuffle(target, x):
         s8.append(x) 
     if target == 9:
         s9.append(x)
-             
+
 def movecrates(crates, source, target):
     print(f"crates: {crates}, source: {source}, target: {target}")
     if source == 1:
         y = s1[-crates:]
         for x in y:
             shuffle(target, x)
-            x = s1[-1]
             del s1[-1]               
     if source == 2:
         y = s2[-crates:]
         for x in y:
             shuffle(target, x)
-            x = s2[-1]
             del s2[-1]
     if source == 3:
         y = s3[-crates:]
         for x in y:
             shuffle(target, x)
-            x = s3[-1]
             del s3[-1]
     if source == 4:
         y = s4[-crates:]            
         for x in y:
             shuffle(target, x)
-            x = s4[-1]
             del s4[-1]
     if source == 5:
-        a = s5[-crates:]            
-        y = list(reversed(a))  
+        y = s5[-crates:]            
         for x in y:
             shuffle(target, x)
-            x = s5[-1]
             del s5[-1]
     if source == 6:
         y = s6[-crates:]            
         for x in y:
             shuffle(target, x)
-            x = s6[-1]
             del s6[-1]
     if source == 7:
         y = s7[-crates:]            
         for x in y:
             shuffle(target, x)
-            x = s7[-1]
             del s7[-1]
     if source == 8:
         y = s8[-crates:]            
         for x in y:
             shuffle(target, x)
-            x = s8[-1]
             del s8[-1]
     if source == 9:
         y = s9[-crates:]            
         for x in y:
             shuffle(target, x)
-            x = s9[-1]
             del s9[-1]
 
 c = 0
@@ -126,8 +116,8 @@ for m in moves:
     c += 1
     print(f"Move {c}:\n{s1}\n{s2}\n{s3}\n{s4}\n{s5}\n{s6}\n{s7}\n{s8}\n{s9}")
     movecrates(m[0],m[1],m[2])
-    if (c % 10) == 0:
-        input("Press Enter to continue... ") 
+    # if (c % 10) == 0:
+    #     input("Press Enter to continue... ") 
 
-#print(f"{s1}\n{s2}\n{s3}\n{s4}\n{s5}\n{s6}\n{s7}\n{s8}\n{s9}")
+print(f"Final: {s1}\n{s2}\n{s3}\n{s4}\n{s5}\n{s6}\n{s7}\n{s8}\n{s9}")
 #print(f"{s1}\n{s2}\n{s3}")
