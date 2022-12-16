@@ -19,6 +19,7 @@ for i in input:
             continue
         case size, _:
             for idx in range(len(dir_stack)):
+                print(f"idx: {idx}, length: {len(dir_stack)} ")
                 curr_path = '/' if idx == 0 else '/'.join(dir_stack[:idx+1])[1:]
             if curr_path not in dir_size:
                 dir_size[curr_path] = 0
@@ -27,7 +28,6 @@ for i in input:
             continue        
 
 s=0
-print(f"dir_stack:{dir_size}")
 #s = sum([size for size in dir_size.values() if size <= 100000])
 for size in dir_size.values():
     if size <= 100000:
