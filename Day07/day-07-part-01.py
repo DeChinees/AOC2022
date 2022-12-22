@@ -3,7 +3,7 @@ import pathlib
 dir_size = {}
 dir_stack = []
 
-input = pathlib.Path('Day07/test.txt').read_text().split("\n")
+input = pathlib.Path('Day07/input.txt').read_text().split("\n")
 print(f"{input}")
 
 for i in input:
@@ -28,15 +28,26 @@ for i in input:
 
 
 s=0
-# #s = sum([size for size in dir_size.values() if size <= 100000])
-# for size in dir_size.values():
-#     if size <= 100000:
-#         print(f"dir_size:{size}")
-#         s += size
-# print(f"total:{s}")
-# #print(f"dir_stack:{dir_stack}")
-
+s = sum([size for size in dir_size.values() if size <= 100000])
 for dir, size in dir_size.items():
     if size <= 100000:
-        print(f"dir: {dir} - size:{size}")
+        print(f"dir:{dir} - dir_size:{size}")
+        s += size
+print(f"total:{s}")
+#print(f"dir_stack:{dir_stack}")
+
+# for dir, size in dir_size.items():
+#     if size <= 100000:
+#         print(f"dir: {dir} - size:{size}")
+
+
+# res = dict(reversed(list(dir_size.items())))
+# print(res)
+# d = ""
+# for dir, size in res.items():
+#     if size <= 100000:
+#         if (str(dir).count('/') > 1):
+#             d = str(dir)
+        
+#         s += size
     
